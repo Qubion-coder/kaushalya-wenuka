@@ -31,9 +31,9 @@ const INVITATION = {
   ],
 } as const;
 
-const backgroundMusic = "/handawaka-various-artists.mp3";
+const backgroundMusic = "/Danushka Senadeera Production (The Kandy Esala Perahera 2024).mp3";
 const googleScriptUrl =
-  "https://script.google.com/macros/s/AKfycbx6tVTRxM0Fjc10fR0a35PjSjb9JJN-9F7zDpxyJvVMhdZ3A-_rOkAV8x8Cwpeqfp5NLw/exec";
+  "https://script.google.com/macros/s/AKfycbz_MQFzdPbvnvpRQZYgW_qf6KcW-_m929v76uN_bMAtY9jYGxzE39wK5Xny3JkA-YLK/exec";
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 const preImagePath = (fileName: string) => `/pre/${fileName.replaceAll(" ", "%20")}`;
