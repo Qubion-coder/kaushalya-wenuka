@@ -590,8 +590,8 @@ export default function WeddingInvitation() {
                     viewport={{ once: true }}
                     className="mb-12 md:mb-16 text-2xl md:text-4xl font-bold text-[#8b6914] flex flex-col items-center gap-3"
                   >
-                    <span className="text-base md:text-lg opacity-80 tracking-[0.3em] font-sans text-slate-700">Dear</span>
-                    <span>{guestName} {prefix}</span>
+                    <span className="text-base md:text-lg opacity-80 tracking-[0.3em] font-sans text-slate-700">We cordially invite</span>
+                    <span>{prefix} {guestName}</span>
                   </motion.div>
                 )}
 

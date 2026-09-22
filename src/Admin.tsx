@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function Admin() {
-  const [prefix, setPrefix] = useState('ඔබට');
+  const [prefix, setPrefix] = useState('Mr.');
   const [guestName, setGuestName] = useState('');
   const [generatedUrl, setGeneratedUrl] = useState('');
   const [generatedMessage, setGeneratedMessage] = useState('');
@@ -9,10 +9,28 @@ export default function Admin() {
   const [copiedMessage, setCopiedMessage] = useState(false);
 
   const prefixes = [
-    { value: 'ඔබට', label: 'obata (ඔබට)' },
-    { value: 'ඔබ දෙපළට', label: 'oba depalata (ඔබ දෙපළට)' },
-    { value: 'ඔබ ඇතුළු පවුලේ සැමට', label: 'oba athulu pawule samata (ඔබ ඇතුළු පවුලේ සැමට)' }
+    { value: 'Mr.', label: 'Mr.' },
+    { value: 'Mrs.', label: 'Mrs.' },
+    { value: 'Miss', label: 'Miss' },
+    { value: 'Mr. & Mrs.', label: 'Mr. & Mrs.' },
+    { value: 'Family', label: 'Family' },
+    { value: 'Dear', label: 'Dear' },
   ];
+
+  const buildMessage = (url: string, name: string, pfx: string) => {
+    return `Dear ${pfx} ${name} ❤️
+
+With joyful hearts, we warmly invite you to celebrate one of the most special days of our lives as we begin our journey together.
+
+Please view our wedding invitation and all the event details through the link below 🌐:
+
+${url}
+
+Your presence would truly mean the world to us, and we would be honored to celebrate this beautiful moment together.
+
+With love,
+❤️ Wenuka & Kaushalya`;
+  };
 
   const handleGenerate = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,23 +38,9 @@ export default function Admin() {
 
     const baseUrl = window.location.origin;
     const url = `${baseUrl}/?to=${encodeURIComponent(guestName.trim())}&prefix=${encodeURIComponent(prefix)}`;
-    
+
     setGeneratedUrl(url);
-
-    const message = `ආදරණීය ${guestName.trim()} ${prefix} ❤️
-
-අපගේ ජීවිතයේ සුවිශේෂීම දිනයක් වන අපගේ විවාහ මංගල්‍යයේ සතුට ඔබත් සමඟ බෙදා ගැනීමට අපි ඉතා ආදරයෙන් ඔබව ආරාධනා කරමු.
-
-කරුණාකර පහත සබැඳිය හරහා අපගේ විවාහ ආරාධනා පත සහ සියලුම උත්සව විස්තර බලන්න 🌐:
-
-${url}
-
-ඔබගේ පැමිණීම අපට මහත් ආශීර්වාදයක් වන අතර, මෙම සුන්දර අවස්ථාව ඔබත් සමඟ සැමරීමට ලැබීම අපට මහත් ගෞරවයක් වනු ඇත.
-
-ආදරයෙන්,
-❤️ වෙනුක සහ කෞශල්‍යා`;
-
-    setGeneratedMessage(message);
+    setGeneratedMessage(buildMessage(url, guestName.trim(), prefix));
     setCopiedLink(false);
     setCopiedMessage(false);
   };
@@ -66,7 +70,7 @@ ${url}
   return (
     <div className="h-[100dvh] overflow-y-auto overflow-x-hidden bg-slate-50 py-12 px-4 font-sans">
       <div className="max-w-3xl mx-auto space-y-8">
-        
+
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
           <h1 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600">
@@ -129,7 +133,7 @@ ${url}
               </svg>
               Generated Invitation Message
             </h2>
-            
+
             <div className="bg-slate-50 rounded-xl p-5 border border-slate-100 whitespace-pre-wrap text-slate-700 text-sm md:text-base leading-relaxed font-sans shadow-inner">
               {generatedMessage}
             </div>
@@ -151,7 +155,7 @@ ${url}
                   </>
                 )}
               </button>
-              
+
               <button
                 onClick={handleCopyMessage}
                 className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors shadow-sm active:scale-[0.99] flex justify-center items-center gap-2"
@@ -176,4 +180,3 @@ ${url}
     </div>
   );
 }
-
