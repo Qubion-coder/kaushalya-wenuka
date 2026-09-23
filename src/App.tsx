@@ -410,10 +410,10 @@ export default function WeddingInvitation() {
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     className="mb-12"
                   >
-                    <h2 className="text-4xl md:text-6xl text-white mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] font-bold">
+                    <h2 className="text-4xl md:text-6xl text-white mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] font-bold !font-['Cinzel']">
                       Wedding Invitation
                     </h2>
-                    <p className="text-base md:text-2xl text-white tracking-[0.2em] md:tracking-[0.3em] drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] mt-4">
+                    <p className="text-3xl md:text-5xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] mt-4 !font-['Playball']">
                       {INVITATION.couple.bride} & {INVITATION.couple.groom}
                     </p>
                   </motion.div>
@@ -465,7 +465,7 @@ export default function WeddingInvitation() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 2, delay: 0.8 }}
-                    className="text-3xl md:text-6xl text-white mb-8 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] font-bold"
+                    className="text-3xl md:text-6xl text-white mb-8 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] font-bold !font-['Cinzel']"
                   >
                     Wedding Invitation!
                   </motion.h2>
@@ -475,9 +475,9 @@ export default function WeddingInvitation() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 2, delay: 1.2 }}
-                      className="text-2xl md:text-6xl text-white tracking-[0.1em] md:tracking-[0.2em] font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] text-center leading-normal"
+                      className="text-4xl md:text-7xl text-white font-bold drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] text-center leading-normal !font-['Playball']"
                     >
-                      {INVITATION.couple.bride} <span className="text-xl md:text-5xl opacity-90 italic mx-1 md:mx-3">&</span> {INVITATION.couple.groom}
+                      {INVITATION.couple.bride} <span className="text-2xl md:text-5xl opacity-90 italic mx-1 md:mx-3 !font-['Cinzel']">&</span> {INVITATION.couple.groom}
                     </motion.p>
                   </div>
                 </motion.div>
@@ -612,14 +612,14 @@ export default function WeddingInvitation() {
                       Beloved daughter of Mr. & Mrs. Mudunkothuwa
                     </p>
                     <h3 className="text-3xl md:text-4xl font-bold text-[#8b6914] my-2">
-                      Sandamali Kaushalya
+                      {INVITATION.couple.bride}
                     </h3>
 
                     <p className="text-slate-700">
                       Beloved son of Mr. & Mrs. Manipura
                     </p>
                     <h3 className="text-3xl md:text-4xl font-bold text-[#8b6914] my-2">
-                      Kasun Wenuka Bandara
+                      {INVITATION.couple.groom}
                     </h3>
 
                     <p className="text-slate-700 max-w-2xl mx-auto pt-2">
