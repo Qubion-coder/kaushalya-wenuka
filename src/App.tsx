@@ -33,7 +33,7 @@ const INVITATION = {
 
 const backgroundMusic = "/Danushka Senadeera Production (The Kandy Esala Perahera 2024).mp3";
 const googleScriptUrl =
-  "https://script.google.com/macros/s/AKfycbz_MQFzdPbvnvpRQZYgW_qf6KcW-_m929v76uN_bMAtY9jYGxzE39wK5Xny3JkA-YLK/exec";
+  "https://script.google.com/macros/s/AKfycbzAUmtbc_OxdTUovdVKxwClgOfRgeK4WF7isZU86PHL2lED366dGv4IshiMH98jELKr/exec";
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 const preImagePath = (fileName: string) => `/pre/${fileName.replaceAll(" ", "%20")}`;
@@ -849,13 +849,46 @@ export default function WeddingInvitation() {
                           type="button"
                           onClick={() => {
                             setRsvpStatus("idle");
-                            setRsvpForm((prev) => ({ ...prev, guests: "1" }));
+                            setRsvpForm((prev) => ({ ...prev, guests: prev.guests === "0" ? "1" : prev.guests }));
                           }}
                           aria-pressed={rsvpForm.guests !== "0"}
                           className={`w-full py-5 md:py-6 rounded-xl text-sm md:text-base tracking-wide transition-all shadow-sm flex items-center justify-center px-4 leading-relaxed active:scale-[0.98] ${rsvpForm.guests !== "0" ? "bg-[#7a5a1e] text-white hover:bg-[#5c3d0e]" : "bg-[#f3f3f3] hover:bg-slate-200 text-slate-800"}`}
                         >
                           Yes, I will be there with love!
                         </button>
+
+                        <AnimatePresence>
+                          {rsvpForm.guests !== "0" && (
+                            <motion.div 
+                              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                              animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                              className="space-y-2 overflow-hidden"
+                            >
+                              <label className="text-xs font-bold text-slate-700 ml-1">Guest Count</label>
+                              <div className="relative">
+                                <select
+                                  value={rsvpForm.guests}
+                                  onChange={(e) => {
+                                    setRsvpStatus("idle");
+                                    setRsvpForm((prev) => ({ ...prev, guests: e.target.value }));
+                                  }}
+                                  className="w-full bg-[#f3f3f3] hover:bg-slate-200 rounded-xl px-4 py-4 text-slate-800 focus:outline-none focus:ring-1 focus:ring-[#7a5a1e] transition-all text-sm md:text-base font-numeric appearance-none cursor-pointer"
+                                >
+                                  <option value="1">1 - Only me</option>
+                                  <option value="2">2 - We both coming</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                </select>
+                                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+                                  <ChevronDown className="w-5 h-5" />
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
 
                         <button
                           type="button"
